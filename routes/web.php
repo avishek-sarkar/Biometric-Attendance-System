@@ -2,35 +2,49 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\StudentController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
+// Public routes
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 })->name('home');
 
 Route::post('/role/redirect', [RoleController::class, 'redirect'])->name('role.redirect');
 
-Route::get('/student', function () {
-  return view('student');
-})->name('student');
+// Guest routes (only accessible if NOT logged in)
+Route::middleware('guest')->group(function () {
+    Route::get('/student', function () {
+        return view('student');
+    })->name('student');
+    
+    Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
+});
 
+// Role-specific routes (publicly accessible)
 Route::get('/teacher', function () {
-  return view('teacher');
+    return view('teacher');
 })->name('teacher');
 
 Route::get('/admin', function () {
-  return view('admin');
+    return view('admin');
 })->name('admin');
 
 Route::get('/developer', function () {
-  return view('developer');
+    return view('developer');
 })->name('developer');
+
+// Protected routes that require authentication
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    // Add other protected routes here
+});
+
+// Authentication routes
+Auth::routes(['verify' => true]);
+
+// Email verification routes
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
