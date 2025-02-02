@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
   return view('welcome');
 })->name('home');
+
+Route::post('/role/redirect', [RoleController::class, 'redirect'])->name('role.redirect');
 
 Route::get('/student', function () {
   return view('student');
