@@ -52,11 +52,14 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    // Updated regex to handle both formats with or without spaces
+    // Updated regex to specifically handle +880 format
     const cleanPhone = phone.replace(/\s+/g, '');
-    const phoneRegex = /^(?:\+?880|0)1\d{9}$/;
+    if (!cleanPhone.startsWith('+880')) {
+        return "Phone number must start with +880";
+    }
+    const phoneRegex = /^\+880[0-9]{10}$/;
     if (!phoneRegex.test(cleanPhone)) {
-        return "Please enter a valid Bangladeshi phone number (+8801XXXXXXXXX or 01XXXXXXXXX)";
+        return "Please enter a valid Bangladeshi phone number (+880XXXXXXXXXX)";
     }
     return "";
 }
@@ -94,7 +97,7 @@ async function checkDuplicate(field, value) {
         formData.append('field', field);
         formData.append('value', value);
 
-        const response = await fetch('check_duplicate.php', {
+        const response = await fetch('/Biometric-Attendance-System/controllers/check_duplicate.php', {
             method: 'POST',
             body: formData
         });
@@ -132,6 +135,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
     const fields = ['name', 'roll', 'reg', 'session', 'email', 'phone', 'password', 'confirmPassword'];
     let debounceTimers = {};
+
+    // Initialize phone input with +880
+    const phoneInput = document.getElementById('phone');
+    if (!phoneInput.value) {
+        phoneInput.value = '+880';
+    }
+
+    // Handle phone input formatting
+    phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value;
+        
+        // Ensure value starts with +880
+        if (!value.startsWith('+880')) {
+            value = '+880';
+        }
+        
+        // Only allow numbers after +880
+        if (value.length > 4) {
+            const numbers = value.slice(4).replace(/[^\d]/g, '');
+            value = '+880' + numbers;
+        }
+        
+        // Limit to maximum length (+880 + 10 digits)
+        if (value.length > 14) {
+            value = value.slice(0, 14);
+        }
+        
+        this.value = value;
+    });
+
+    // Prevent deletion of +880 prefix
+    phoneInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value.length <= 4) {
+            e.preventDefault();
+        }
+    });
 
     // Fields that need duplicate checking
     const duplicateCheckFields = ['roll', 'reg', 'email', 'phone'];
@@ -246,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(this);
         
         try {
-            const response = await fetch('send_mail.php', {
+            const response = await fetch('/Biometric-Attendance-System/controllers/send_mail.php', {
                 method: 'POST',
                 body: formData
             });
