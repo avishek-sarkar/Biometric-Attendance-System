@@ -1,14 +1,5 @@
 <?php
-$host = 'localhost';
-$dbname = 'attendancesystem';
-$username = 'root';
-$password = '';
-
-$conn = new mysqli($host, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once '../config/db_config.php';
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
@@ -25,7 +16,6 @@ try {
 
     $email = $_POST['email'];
     $name = $_POST['name'];
-   
     $verification_token = bin2hex(random_bytes(32));
 
     $mail = new PHPMailer(true);
@@ -50,14 +40,11 @@ try {
     <h2>Email Verification</h2>
     <p>Dear $name,</p>
     <p>Please click the link below to verify your email address and complete your registration:</p>
-    <a href='http://localhost/registration/mail_verification.php?token=$verification_token' style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
+    <a href='http://localhost/Biometric-Attendance-System/views/mail_verification.php?token=$verification_token' style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
         Verify Email
     </a>
     <p>If you didn't request this verification, please ignore this email.</p>
 ";
-
-if($mail->send()) echo"sended successfully";
-else echo "error";
 
     if($mail->send()) {
         // Store token in temporary table
@@ -85,7 +72,7 @@ else echo "error";
                 'success' => true, 
                 'message' => 'Verification email sent successfully',
                 'token' => $verification_token,
-                'redirect' => "verification_pending.php?token=" . $verification_token
+                'redirect' => "../views/verification_pending.php?token=" . $verification_token
             ]);
         }
            else {
@@ -94,8 +81,7 @@ else echo "error";
 
         
     }
- }
- catch (Exception $e) {
+} catch (Exception $e) {
     echo json_encode([
         'success' => false, 
         'message' => "Error: " . $e->getMessage()

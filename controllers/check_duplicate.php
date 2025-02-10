@@ -1,6 +1,15 @@
 <?php
 header('Content-Type: application/json');
-require_once 'db_config.php';
+$host = 'localhost';
+$dbname = 'attendancesystem';
+$username = 'root';
+$password = '';
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);
@@ -15,12 +24,20 @@ error_log("Checking duplicate: field=$field, value=$value");
 $response = ['exists' => false, 'message' => ''];
 
 if (!empty($field) && !empty($value)) {
-    $allowedFields = ['roll', 'reg', 'email', 'phone'];
-    
-    if (in_array($field, $allowedFields)) {
+    // Map the form field names to database field names
+    $fieldMapping = [
+        'roll' => 'student_roll',
+        'reg' => 'student_reg',
+        'email' => 'student_email',
+        'phone' => 'student_phone'
+    ];
+
+    // Check if the field exists in our mapping
+    if (isset($fieldMapping[$field])) {
         try {
-            // Prepare the query
-            $query = "SELECT COUNT(*) as count FROM students WHERE $field = ?";
+            // Use the mapped field name for the query
+            $dbField = $fieldMapping[$field];
+            $query = "SELECT COUNT(*) as count FROM student_info WHERE $dbField = ?";
             $stmt = $conn->prepare($query);
             
             if ($stmt === false) {
