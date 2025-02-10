@@ -189,7 +189,7 @@ require_once '../config/db_config.php';
             </div>
             <h2 class="text-success mb-3">Registration Complete!</h2>
             <p class="text-muted mb-4">Your fingerprint has been successfully registered.</p>
-            <a href="login.php" class="btn btn-login btn-primary">Proceed to Login</a>
+            <a href="../views/login_form.php" class="btn btn-login btn-primary">Proceed to Login</a>
         </div>
     </div>
 
