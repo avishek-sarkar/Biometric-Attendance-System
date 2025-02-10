@@ -96,7 +96,7 @@ async function checkDuplicate(field, value) {
         const formData = new FormData();
         formData.append('field', field);
         formData.append('value', value);
-
+        //check_duplicate.php file is checking the duplicates from the database
         const response = await fetch('/Biometric-Attendance-System/controllers/check_duplicate.php', {
             method: 'POST',
             body: formData
@@ -285,6 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(this);
         
         try {
+            //response for mail send
             const response = await fetch('/Biometric-Attendance-System/controllers/send_mail.php', {
                 method: 'POST',
                 body: formData
