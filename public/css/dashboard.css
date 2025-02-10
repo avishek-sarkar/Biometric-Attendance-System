@@ -1,0 +1,64 @@
+.dashboard-header {
+  background: linear-gradient(135deg, #C6E7FF, #D4F6FF);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.student-profile {
+  transition: transform 0.3s ease;
+}
+
+.student-profile:hover {
+  transform: translateY(-5px);
+}
+
+.profile-icon {
+  font-size: 4rem;
+  color: #4CAF50;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: #4CAF50;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  color: #2C3E50;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+      margin-bottom: 1rem;
+  }
+  
+  .profile-icon {
+      font-size: 3rem;
+  }
+  
+  .contact-info p {
+      font-size: 1rem;
+  }
+}
