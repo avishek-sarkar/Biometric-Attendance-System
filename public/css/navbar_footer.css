@@ -1,0 +1,136 @@
+/* Navbar Styles */
+.navbar {
+  background-color: #C6E7FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  flex-wrap: nowrap;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-options {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  color: #000000;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #D4F6FF;
+  color: #000;
+  border-radius: 5px;
+}
+
+.mobile-icon {
+  font-size: 1.8rem;
+  color: #000000;
+  cursor: pointer;
+  margin-left: 1rem;
+  display: none;
+}
+
+#sidePanel {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #FBFBFB;
+  overflow-x: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
+  z-index: 1001;
+}
+
+#sidePanel a {
+  text-align: center;
+  padding: 15px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #000000;
+  display: block;
+  transition: 0.2s;
+}
+
+#sidePanel a:hover {
+  background-color: #C6E7FF;
+  border-radius: 5px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #C6E7FF;
+  padding: 0.5rem;
+  text-align: center;
+  color: #000000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer .btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 65px;
+  margin-bottom: 60px;
+  min-height: calc(100vh - 125px);
+  padding: 2rem 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 1rem;
+  }
+
+  .navbar-brand {
+      font-size: 1.2rem;
+  }
+
+  .nav-options {
+      display: none;
+  }
+
+  .mobile-icon {
+      display: block;
+      font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+      font-size: 1rem;
+  }
+
+  .mobile-icon {
+      font-size: 1.4rem;
+  }
+}
