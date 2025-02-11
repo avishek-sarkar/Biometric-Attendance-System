@@ -32,7 +32,7 @@ require_once '../config/db_config.php';
                     <div class="form-container">
                         <div class="text-center mb-4">
                             <i class="fas fa-envelope fingerprint-logo"></i>
-                            <h2>Resend Verification Email- not workable</h2>
+                            <h2>Resend Verification Email</h2>
                         </div>
 
                         <?php if(isset($_SESSION['status'])): ?>
@@ -43,10 +43,7 @@ require_once '../config/db_config.php';
                             <?php unset($_SESSION['status']); ?>
                         <?php endif; ?>
 
-                        <form id="resendForm" action="../controllers/send_mail.php" method="POST">
-                            <!-- Hidden field for name -->
-                            <input type="hidden" name="name" value="User">
-                            
+                        <form id="resendForm" action="../controllers/resend_email.php" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
                                 <div class="input-group">
@@ -88,12 +85,11 @@ require_once '../config/db_config.php';
             const emailInput = document.getElementById('email');
             const emailError = document.getElementById('emailError');
             
-            // Clear previous error
             emailError.textContent = '';
             
             try {
                 const formData = new FormData(e.target);
-                const response = await fetch('../controllers/send_mail.php', {
+                const response = await fetch('../controllers/resend_email.php', {
                     method: 'POST',
                     body: formData
                 });
