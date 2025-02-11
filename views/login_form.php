@@ -48,7 +48,7 @@ if (isset($_SESSION['authenticated'])) {
                 <h2>Login</h2>
               </div>
 
-              <form id="loginForm" action="../models/login.php" method="POST">
+              <form id="loginForm" action="../controllers/login.php" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email Address</label>
                   <div class="input-group">

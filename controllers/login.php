@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 session_start();
 require_once '../config/db_config.php';
 
@@ -75,6 +76,6 @@ try {
     }
 }
 
-header('Content-Type: application/json');
+
 echo json_encode($response);
 ?>
