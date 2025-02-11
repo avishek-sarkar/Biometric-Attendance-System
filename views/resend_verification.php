@@ -43,7 +43,7 @@ require_once '../config/db_config.php';
                             <?php unset($_SESSION['status']); ?>
                         <?php endif; ?>
 
-                        <form id="resendForm" action="../controllers/resend_code.php" method="POST">
+                        <form id="resendForm" action="../controllers/resend_email.php" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
                                 <div class="input-group">
@@ -89,7 +89,7 @@ require_once '../config/db_config.php';
             
             try {
                 const formData = new FormData(e.target);
-                const response = await fetch('../controllers/resend_code.php', {
+                const response = await fetch('../controllers/resend_email.php', {
                     method: 'POST',
                     body: formData
                 });
