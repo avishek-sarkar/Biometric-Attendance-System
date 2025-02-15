@@ -1,15 +1,16 @@
-<?php
-session_start();
+<?php 
+session_start(); 
 ?>
-<nav class="navbar navbar-expand-lg fixed-top">
+
+<nav class="navbar fixed-top"> 
     <div class="container-fluid">
-        <span class="navbar-brand">Attendance Management System</span>
+        <span class="navbar-brand">Biometric Attendance Management System</span>
         <div class="ms-auto d-flex align-items-center">
             <div class="nav-options">
                 <a class="nav-link" href="/Biometric-Attendance-System/index.php">Home</a>
                 <?php if (!isset($_SESSION['authenticated'])) : ?>
-                    <a class="nav-link" href="/Biometric-Attendance-System/views/registerForm.html">Student</a>
-                    <a class="nav-link" href="/Biometric-Attendance-System/views/teacher_register.php">Teacher</a>
+                    <a class="nav-link" href="/Biometric-Attendance-System/views/registerForm.html">Register as Student</a>
+                    <a class="nav-link" href="/Biometric-Attendance-System/views/teacher_register.php">Register as Teacher</a>
                     <a class="nav-link" href="/Biometric-Attendance-System/views/login_form.php">Login</a>
                 <?php else : ?>
                     <a class="nav-link" href="/Biometric-Attendance-System/views/dashboard.php">Dashboard</a>
@@ -26,8 +27,8 @@ session_start();
 <div id="sidePanel">
     <a href="/Biometric-Attendance-System/index.php">Home</a>
     <?php if (!isset($_SESSION['authenticated'])) : ?>
-        <a href="/Biometric-Attendance-System/views/registerForm.html">Student</a>
-        <a href="/Biometric-Attendance-System/views/teacher_register.php">Teacher</a>
+        <a href="/Biometric-Attendance-System/views/registerForm.html">Register as Student</a>
+        <a href="/Biometric-Attendance-System/views/teacher_register.php">Register as Teacher</a>
         <a href="/Biometric-Attendance-System/views/login_form.php">Login</a>
     <?php else : ?>
         <a href="/Biometric-Attendance-System/views/dashboard.php">Dashboard</a>

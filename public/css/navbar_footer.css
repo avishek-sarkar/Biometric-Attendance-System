@@ -1,7 +1,7 @@
 /* Navbar Styles */
 .navbar {
   background-color: #C6E7FF;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
@@ -24,7 +24,14 @@
 
 .nav-options {
   display: flex;
+  white-space: nowrap;
   gap: 10px;
+}
+
+/* Fix Bootstrap conflict for navbar toggling */
+.navbar-collapse {
+  display: flex !important;
+  flex-basis: auto !important;
 }
 
 .nav-link {
@@ -46,20 +53,20 @@
   color: #000000;
   cursor: pointer;
   margin-left: 1rem;
-  display: none;
+  display: none; /* Initially hidden */
 }
 
+/* Side Panel */
 #sidePanel {
-  height: 100%;
+  height: calc(100% - 65px); /* Subtract navbar height */
   width: 0;
   position: fixed;
-  top: 0;
+  top: 65px; /* Match navbar height */
   right: 0;
   background-color: #FBFBFB;
   overflow-x: hidden;
   transition: 0.2s;
-  padding-top: 60px;
-  z-index: 1001;
+  z-index: 999; /* Set lower than navbar's z-index (1000) */
 }
 
 #sidePanel a {
@@ -77,15 +84,40 @@
   border-radius: 5px;
 }
 
+/* Responsive Design */
+@media (max-width: 1158px) {
+  .navbar {
+      padding: 1rem;
+  }
+
+  .nav-options {
+      display: none !important; /* Hide nav options */
+  }
+
+  .mobile-icon {
+      display: block !important; /* Ensure mobile icon is visible */
+      font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 616px) {
+  .navbar-brand {
+      font-size: 0.9rem;
+  }
+
+  .mobile-icon {
+      font-size: 1.4rem;
+  }
+}
+
 /* Footer Styles */
 .footer {
   background-color: #C6E7FF;
   padding: 0.5rem;
   text-align: center;
   color: #000000;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  margin-top: auto;
 }
 
 .footer p {
@@ -100,37 +132,35 @@
 /* Main Content */
 .main-content {
   margin-top: 65px;
-  margin-bottom: 60px;
-  min-height: calc(100vh - 125px);
-  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+  min-height: calc(100vh - 125px); 
+  padding: 2rem 1rem;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers horizontally */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navbar {
-      padding: 1rem;
-  }
-
-  .navbar-brand {
-      font-size: 1.2rem;
-  }
-
-  .nav-options {
-      display: none;
-  }
-
-  .mobile-icon {
-      display: block;
-      font-size: 1.6rem;
-  }
+.card {
+  background-color: #C6E7FF;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 576px) {
-  .navbar-brand {
-      font-size: 1rem;
-  }
+.card:hover {
+  transform: scale(1.05);
+}
 
-  .mobile-icon {
-      font-size: 1.4rem;
-  }
+.card-body {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card .btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
