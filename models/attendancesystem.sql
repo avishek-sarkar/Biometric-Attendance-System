@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 10, 2025 at 03:40 AM
+-- Host: localhost
+-- Generation Time: Feb 15, 2025 at 10:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,25 @@ CREATE TABLE `student_info` (
 
 INSERT INTO `student_info` (`id`, `student_name`, `student_roll`, `student_reg`, `student_session`, `student_email`, `student_phone`, `password`, `fingerId`) VALUES
 (132, 'Prantic Paul', '21102042', '9909', '2020-21', 'pranticpaulshimul@gmail.com', '+8801739509014', '$2y$10$PJR3RhcG.O9R19BXzVi1PuzwOrkF.Q4L2VQK9ah68lqIlkIpPg/r6', 1),
-(133, 'Tuhin', '21102023', '9896', '2020-21', 'shimulpranticpaul@gmail.com', '+8801739509033', '$2y$10$6L2dmrL2QJFo9eT4soypSO85oZv9.3/8FS9bbMuQpmKDLngSkKvOK', 2);
+(133, 'Tuhin', '21102023', '9896', '2020-21', 'shimulpranticpaul@gmail.com', '+8801739509033', '$2y$10$6L2dmrL2QJFo9eT4soypSO85oZv9.3/8FS9bbMuQpmKDLngSkKvOK', 2),
+(143, 'Avishek Sarkar', '21102036', '9902', '2020-21', 'jkkniubioattendance@gmail.com', '+8801726927575', '$2y$10$6JEH3onGKdwESb8ANrepfeC6GjAJWi6V9pzYfmITaXGuCLNrksi4u', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacher_info`
+--
+
+CREATE TABLE `teacher_info` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `designation` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `teacher_email` varchar(191) NOT NULL,
+  `teacher_phone` varchar(20) NOT NULL,
+  `is_verified` tinyint(1) DEFAULT 0 COMMENT '0 = No, 1 = Yes',
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -104,6 +122,13 @@ ALTER TABLE `student_info`
   ADD UNIQUE KEY `student_email` (`student_email`);
 
 --
+-- Indexes for table `teacher_info`
+--
+ALTER TABLE `teacher_info`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `teacher_email` (`teacher_email`);
+
+--
 -- Indexes for table `temp_registrations`
 --
 ALTER TABLE `temp_registrations`
@@ -123,13 +148,19 @@ ALTER TABLE `fingerprint_data`
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+
+--
+-- AUTO_INCREMENT for table `teacher_info`
+--
+ALTER TABLE `teacher_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `temp_registrations`
 --
 ALTER TABLE `temp_registrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,11 @@ session_start();
                     <a class="nav-link" href="/Biometric-Attendance-System/views/teacher_register.php">Register as Teacher</a>
                     <a class="nav-link" href="/Biometric-Attendance-System/views/login_form.php">Login</a>
                 <?php else : ?>
-                    <a class="nav-link" href="/Biometric-Attendance-System/views/dashboard.php">Dashboard</a>
+                    <?php if ($_SESSION['auth_user']['role'] === 'teacher') : ?>
+                        <a class="nav-link" href="/Biometric-Attendance-System/views/teacher_dashboard.php">Teacher Dashboard</a>
+                    <?php else : ?>
+                        <a class="nav-link" href="/Biometric-Attendance-System/views/student_dashboard.php">Student Dashboard</a>
+                    <?php endif; ?>
                     <a class="nav-link" href="/Biometric-Attendance-System/controllers/logout.php">Logout</a>
                 <?php endif; ?>
             </div>
@@ -31,7 +35,11 @@ session_start();
         <a href="/Biometric-Attendance-System/views/teacher_register.php">Register as Teacher</a>
         <a href="/Biometric-Attendance-System/views/login_form.php">Login</a>
     <?php else : ?>
-        <a href="/Biometric-Attendance-System/views/dashboard.php">Dashboard</a>
+        <?php if ($_SESSION['auth_user']['role'] === 'teacher') : ?>
+            <a href="/Biometric-Attendance-System/views/teacher_dashboard.php">Teacher Dashboard</a>
+        <?php else : ?>
+            <a href="/Biometric-Attendance-System/views/student_dashboard.php">Student Dashboard</a>
+        <?php endif; ?>
         <a href="/Biometric-Attendance-System/controllers/logout.php">Logout</a>
     <?php endif; ?>
 </div>

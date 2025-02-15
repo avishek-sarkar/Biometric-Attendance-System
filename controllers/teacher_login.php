@@ -10,8 +10,8 @@ try {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Check if email exists in student_info table
-    $stmt = $conn->prepare("SELECT * FROM student_info WHERE student_email = ? LIMIT 1");
+    // Check if email exists in teacher_info table
+    $stmt = $conn->prepare("SELECT * FROM teacher_info WHERE teacher_email = ? AND is_verified = 1 LIMIT 1");
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -23,19 +23,17 @@ try {
             // Set session variables
             $_SESSION['authenticated'] = true;
             $_SESSION['auth_user'] = [
-                'student_id' => $user['id'],
-                'student_name' => $user['student_name'],
-                'student_roll' => $user['student_roll'],
-                'student_reg' => $user['student_reg'],
-                'student_session' => $user['student_session'],
-                'student_email' => $user['student_email'],
-                'student_phone' => $user['student_phone'],
-                'fingerId' => $user['fingerId'],
-                'role' => 'student'
+                'id' => $user['id'],
+                'name' => $user['name'],
+                'designation' => $user['designation'],
+                'department' => $user['department'],
+                'email' => $user['teacher_email'],
+                'phone' => $user['teacher_phone'],
+                'role' => 'teacher'
             ];
 
-            // Redirect to student dashboard
-            header('Location: /Biometric-Attendance-System/views/student_dashboard.php');
+            // Redirect to teacher dashboard
+            header('Location: /Biometric-Attendance-System/views/teacher_dashboard.php');
             exit();
         } else {
             echo "<html><body><script>alert('Invalid password'); window.history.back();</script></body></html>";
