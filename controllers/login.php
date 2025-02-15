@@ -59,13 +59,14 @@ try {
         'student_session' => $user['student_session'],
         'student_email' => $user['student_email'],
         'student_phone' => $user['student_phone'],
-        'fingerId' => $user['fingerId']
+        'fingerId' => $user['fingerId'],
+        'role' => 'student'
     ];
 
     $response = [
         'success' => true,
         'message' => 'Login successful',
-        'redirect' => '/Biometric-Attendance-System/views/dashboard.php'
+        'redirect' => '/Biometric-Attendance-System/views/student_dashboard.php'
     ];
 
 } catch (Exception $e) {
