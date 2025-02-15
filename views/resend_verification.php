@@ -18,65 +18,60 @@ require_once '../config/db_config.php';
     
     <!-- Custom CSS -->
     <link href="../public/css/navbar_footer.css" rel="stylesheet">
-    <link href="../public/css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Main Content -->
     <div class="main-content container-fluid">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="form-container">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-envelope fingerprint-logo"></i>
-                            <h2>Resend Verification Email</h2>
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">Resend Verification Email</h4>
                         </div>
-
-                        <?php if(isset($_SESSION['status'])): ?>
-                            <div class="alert alert-info alert-dismissible fade show">
-                                <?= htmlspecialchars($_SESSION['status']); ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
-                            <?php unset($_SESSION['status']); ?>
-                        <?php endif; ?>
-
-                        <form id="resendForm" action="../controllers/resend_email.php" method="POST">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" name="email" id="email" class="form-control" required>
+                        <div class="card-body">
+                            <?php if(isset($_SESSION['status'])): ?>
+                                <div class="alert alert-info alert-dismissible fade show">
+                                    <?= htmlspecialchars($_SESSION['status']); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                 </div>
-                                <div class="error-message" id="emailError"></div>
-                            </div>
+                                <?php unset($_SESSION['status']); ?>
+                            <?php endif; ?>
 
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane me-2"></i>Resend Verification Email
-                                </button>
-                            </div>
-
-                            <div class="text-center mt-3">
-                                <p>
-                                    <a href="login_form.php" class="text-decoration-none">
-                                        <i class="fas fa-arrow-left me-1"></i>Back to Login
-                                    </a>
-                                </p>
-                            </div>
-                        </form>
+                            <form id="resendForm" action="../controllers/resend_email.php" method="POST">
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label">Enter Your Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input type="email" name="email" id="email" class="form-control" required>
+                                    </div>
+                                    <div class="error-message" id="emailError"></div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane me-2"></i>Resend Verification Email
+                                    </button>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <p>
+                                        <a href="login_form.php" class="text-decoration-none">
+                                            <i class="fas fa-arrow-left me-1"></i>Back to Login
+                                        </a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/navbar_footer.js"></script>
     <script>
