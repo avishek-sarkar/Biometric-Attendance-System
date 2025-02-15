@@ -156,7 +156,6 @@ if (isset($_SESSION['authenticated'])) {
                                 </p>
                             </div>
                         </form>
-                        <script src="../public/js/login_validation.js"></script>
                     </div>
                 </div>
             </div>

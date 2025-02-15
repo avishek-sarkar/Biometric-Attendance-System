@@ -7,21 +7,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const teacherEmailError = document.getElementById('teacherEmailError');
   const teacherPasswordError = document.getElementById('teacherPasswordError');
 
-  // Handle student login
+  // Email validation function
+  function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+  }
+
+  // Student login handler
   studentLoginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       // Clear previous errors
       studentEmailError.textContent = '';
       studentPasswordError.textContent = '';
-      
-      // Remove existing alerts
-      const existingStudentAlert = studentLoginForm.querySelector('.alert');
-      if (existingStudentAlert) {
-          existingStudentAlert.remove();
+
+      // Get form values
+      const email = studentLoginForm.querySelector('[name="email"]').value.trim();
+      const password = studentLoginForm.querySelector('[name="password"]').value;
+
+      // Validate email
+      if (!validateEmail(email)) {
+          studentEmailError.textContent = 'Please enter a valid email address';
+          return;
       }
 
-      const submitButton = studentLoginForm.querySelector('button[type="submit"]');
+      // Validate password
+      if (!password) {
+          studentPasswordError.textContent = 'Password is required';
+          return;
+      }
+      
+      const submitButton = e.target.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Logging in...';
       
@@ -31,35 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
               method: 'POST',
               body: formData
           });
-
+          
           const data = await response.json();
           
           if (data.success) {
-              // Direct redirect to student dashboard
-              window.location.replace('/Biometric-Attendance-System/views/student_dashboard.php');
+              window.location.href = '../views/student_dashboard.php';
+              return;
+          }
+          
+          // Handle errors
+          if (data.message.includes("Email not found")) {
+              studentEmailError.textContent = data.message;
+          } else if (data.message.includes("Invalid password")) {
+              studentPasswordError.textContent = data.message;
           } else {
-              if (data.message.includes("Email not found")) {
-                  studentEmailError.textContent = data.message;
-              } else if (data.message.includes("Invalid password")) {
-                  studentPasswordError.textContent = data.message;
-              } else {
-                  const alertDiv = document.createElement('div');
-                  alertDiv.className = 'alert alert-danger alert-dismissible fade show';
-                  alertDiv.innerHTML = `
-                      ${data.message}
-                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                  `;
-                  studentLoginForm.insertBefore(alertDiv, studentLoginForm.firstChild);
-              }
+              const alertDiv = document.createElement('div');
+              alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+              alertDiv.innerHTML = `${data.message}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+              studentLoginForm.insertBefore(alertDiv, studentLoginForm.firstChild);
           }
       } catch (error) {
           console.error('Login error:', error);
           const alertDiv = document.createElement('div');
           alertDiv.className = 'alert alert-danger alert-dismissible fade show';
-          alertDiv.innerHTML = `
-              An error occurred during login. Please try again.
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-          `;
+          alertDiv.innerHTML = `An error occurred during login. Please try again.
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
           studentLoginForm.insertBefore(alertDiv, studentLoginForm.firstChild);
       } finally {
           submitButton.disabled = false;
@@ -67,21 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
-  // Handle teacher login
+  // Teacher login handler
   teacherLoginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       // Clear previous errors
       teacherEmailError.textContent = '';
       teacherPasswordError.textContent = '';
-      
-      // Remove existing alerts
-      const existingTeacherAlert = teacherLoginForm.querySelector('.alert');
-      if (existingTeacherAlert) {
-          existingTeacherAlert.remove();
+
+      // Get form values
+      const email = teacherLoginForm.querySelector('[name="email"]').value.trim();
+      const password = teacherLoginForm.querySelector('[name="password"]').value;
+
+      // Validate email
+      if (!validateEmail(email)) {
+          teacherEmailError.textContent = 'Please enter a valid email address';
+          return;
       }
 
-      const submitButton = teacherLoginForm.querySelector('button[type="submit"]');
+      // Validate password
+      if (!password) {
+          teacherPasswordError.textContent = 'Password is required';
+          return;
+      }
+      
+      const submitButton = e.target.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Logging in...';
       
@@ -95,31 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
           const data = await response.json();
           
           if (data.success) {
-              // Direct redirect to teacher dashboard
-              window.location.replace = '/Biometric-Attendance-System/views/teacher_dashboard.php';
+              window.location.href = '../views/teacher_dashboard.php';
+              return;
+          }
+          
+          // Handle errors
+          if (data.message.includes("Email not found")) {
+              teacherEmailError.textContent = data.message;
+          } else if (data.message.includes("Invalid password")) {
+              teacherPasswordError.textContent = data.message;
           } else {
-              if (data.message.includes("Email not found")) {
-                  teacherEmailError.textContent = data.message;
-              } else if (data.message.includes("Invalid password")) {
-                  teacherPasswordError.textContent = data.message;
-              } else {
-                  const alertDiv = document.createElement('div');
-                  alertDiv.className = 'alert alert-danger alert-dismissible fade show';
-                  alertDiv.innerHTML = `
-                      ${data.message}
-                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                  `;
-                  teacherLoginForm.insertBefore(alertDiv, teacherLoginForm.firstChild);
-              }
+              const alertDiv = document.createElement('div');
+              alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+              alertDiv.innerHTML = `${data.message}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+              teacherLoginForm.insertBefore(alertDiv, teacherLoginForm.firstChild);
           }
       } catch (error) {
           console.error('Login error:', error);
           const alertDiv = document.createElement('div');
           alertDiv.className = 'alert alert-danger alert-dismissible fade show';
-          alertDiv.innerHTML = `
-              An error occurred during login. Please try again.
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-          `;
+          alertDiv.innerHTML = `An error occurred during login. Please try again.
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
           teacherLoginForm.insertBefore(alertDiv, teacherLoginForm.firstChild);
       } finally {
           submitButton.disabled = false;

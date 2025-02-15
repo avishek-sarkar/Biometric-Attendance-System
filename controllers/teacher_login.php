@@ -49,10 +49,10 @@ try {
     ];
 
     $response = [
-        'success' => true,
-        'message' => 'Login successful',
-        'redirect' => '../views/teacher_dashboard.php'
-    ];
+      'success' => true,
+      'message' => 'Login successful',
+      'redirect' => '/Biometric-Attendance-System/views/teacher_dashboard.php' // Use absolute path
+  ];
 
 } catch (Exception $e) {
     $response['message'] = $e->getMessage();
