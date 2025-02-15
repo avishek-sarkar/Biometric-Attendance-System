@@ -1,66 +1,52 @@
 <?php
-header('Content-Type: application/json');
 session_start();
 require_once '../config/db_config.php';
 
-$response = ['success' => false, 'message' => '', 'redirect' => ''];
-
 try {
-    if (empty($_POST['email']) || empty($_POST['password'])) {
-        throw new Exception('Please fill in all fields');
+    if (!isset($_POST['email']) || !isset($_POST['password'])) {
+        throw new Exception('Email and password are required');
     }
 
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
+    // Check if email exists in teacher_info table
     $stmt = $conn->prepare("SELECT * FROM teacher_info WHERE teacher_email = ? AND is_verified = 1 LIMIT 1");
-    
-    if (!$stmt) {
-        throw new Exception("Database error occurred");
-    }
-
-    $stmt->bind_param("s", $email);
-    
-    if (!$stmt->execute()) {
-        throw new Exception("Database error occurred");
-    }
-
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
     $result = $stmt->get_result();
-    
-    if ($result->num_rows === 0) {
-        throw new Exception("Email not found or not verified");
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        
+        if (password_verify($password, $user['password'])) {
+            // Set session variables
+            $_SESSION['authenticated'] = true;
+            $_SESSION['auth_user'] = [
+                'id' => $user['id'],
+                'name' => $user['name'],
+                'designation' => $user['designation'],
+                'department' => $user['department'],
+                'email' => $user['teacher_email'],
+                'phone' => $user['teacher_phone'],
+                'role' => 'teacher'
+            ];
+
+            // Redirect to teacher dashboard
+            header('Location: /Biometric-Attendance-System/views/teacher_dashboard.php');
+            exit();
+        } else {
+            echo "<html><body><script>alert('Invalid password'); window.history.back();</script></body></html>";
+        }
+    } else {
+        echo "<html><body><script>alert('Invalid email or account not found'); window.history.back();</script></body></html>";
     }
-
-    $user = $result->fetch_assoc();
-
-    if (!password_verify($password, $user['password'])) {
-        throw new Exception("Invalid password");
-    }
-
-    $_SESSION['authenticated'] = true;
-    $_SESSION['auth_user'] = [
-        'id' => $user['id'],
-        'name' => $user['name'],
-        'designation' => $user['designation'],
-        'department' => $user['department'],
-        'email' => $user['teacher_email'],
-        'phone' => $user['teacher_phone'],
-        'role' => 'teacher'
-    ];
-
-    $response = [
-      'success' => true,
-      'message' => 'Login successful',
-      'redirect' => '/Biometric-Attendance-System/views/teacher_dashboard.php' // Use absolute path
-  ];
 
 } catch (Exception $e) {
-    $response['message'] = $e->getMessage();
-} finally {
-    if (isset($stmt)) {
-        $stmt->close();
-    }
+    echo "<html><body><script>alert('Error: " . $e->getMessage() . "'); window.history.back();</script></body></html>";
 }
 
-echo json_encode($response);
+// Close connections
+if (isset($stmt)) $stmt->close();
+$conn->close();
 ?>
