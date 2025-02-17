@@ -75,7 +75,7 @@ try {
     <h2>Email Verification - Teacher Registration</h2>
     <p>Dear $name,</p>
     <p>Thank you for registering as a teacher. Please click the link below to verify your email address:</p>
-    <a href='http://localhost:81/Biometric-Attendance-System/views/teacher_verification.php?token=$verification_token' 
+    <a href='http://localhost/Biometric-Attendance-System/views/teacher_verification.php?token=$verification_token' 
        style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
         Verify Email
     </a>

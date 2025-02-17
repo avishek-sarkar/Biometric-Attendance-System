@@ -40,7 +40,7 @@ try {
     <h2>Email Verification</h2>
     <p>Dear $name,</p>
     <p>Please click the link below to verify your email address and complete your registration:</p>
-    <a href='http://localhost:81/Biometric-Attendance-System/views/mail_verification.php?token=$verification_token' style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
+    <a href='http://localhost/Biometric-Attendance-System/views/mail_verification.php?token=$verification_token' style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
         Verify Email
     </a>
     <p>If you didn't request this verification, please ignore this email.</p>
