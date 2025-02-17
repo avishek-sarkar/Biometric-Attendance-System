@@ -26,7 +26,7 @@ try {
         throw new Exception('No temporary registration data found');
     }
 
-    // Insert into students table
+    // Insert into student_info table
     $stmt = $conn->prepare("INSERT INTO student_info (student_name, student_roll, student_reg, student_session, student_email, student_phone, password, fingerId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssss", 
         $tempData['name'],
@@ -40,7 +40,27 @@ try {
     );
 
     if (!$stmt->execute()) {
-        throw new Exception('Failed to insert data into students table');
+        throw new Exception('Failed to insert data into student_info table');
+    }
+
+    // Insert into peripheral_course table with name field
+    $stmt = $conn->prepare("INSERT INTO peripheral_course (name, roll, registration, fingerId, attendance, last_date) VALUES (?, ?, ?, ?, ?, ?)");
+    
+    // Set default values for new fields
+    $attendance = 0; // Default attendance
+    $currentDate = 0; // Current date as default last_date
+    
+    $stmt->bind_param("ssssss",
+        $tempData['name'],
+        $tempData['roll'],
+        $tempData['reg'],
+        $fingerId,
+        $attendance,
+        $currentDate
+    );
+
+    if (!$stmt->execute()) {
+        throw new Exception('Failed to insert data into peripheral_course table');
     }
 
     // Delete from temp_registrations

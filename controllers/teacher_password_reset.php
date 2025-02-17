@@ -41,7 +41,7 @@ if(isset($_POST['password_reset_btn'])) {
                 <h2>Password Reset Request</h2>
                 <p>Dear {$user['name']},</p>
                 <p>Click the link below to reset your password:</p>
-                <a href='http://localhost:81/Biometric-Attendance-System/views/teacher_password_change.php?token=$token&email=$email' 
+                <a href='http://localhost/Biometric-Attendance-System/views/teacher_password_change.php?token=$token&email=$email' 
                    style='display: inline-block; background-color: #4ecca3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
                     Reset Password
                 </a>

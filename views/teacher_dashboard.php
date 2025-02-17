@@ -24,7 +24,6 @@ if ($_SESSION['auth_user']['role'] !== 'teacher') {
     
     <!-- Custom CSS -->
     <link href="../public/css/navbar_footer.css" rel="stylesheet">
-    <link href="../public/css/styles.css" rel="stylesheet">
     <link href="../public/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
