@@ -89,84 +89,14 @@ if ($_SESSION['auth_user']['role'] !== 'teacher') {
                 </div>
             </div>
 
-            <!-- Class Statistics -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card stat-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Classes</h5>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-calendar-alt stat-icon"></i>
-                                <h3 class="mb-0 ms-3">35</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card stat-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Students</h5>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-users stat-icon text-success"></i>
-                                <h3 class="mb-0 ms-3">150</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card stat-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Average Attendance</h5>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-chart-line stat-icon text-primary"></i>
-                                <h3 class="mb-0 ms-3">85%</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card stat-card">
-                        <div class="card-body">
-                            <h5 class="card-title">This Month</h5>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-calendar-check stat-icon text-info"></i>
-                                <h3 class="mb-0 ms-3">12</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Quick Actions</h4>
-                            <div class="row g-4">
-                                <div class="col-md-4">
-                                    <a href="#" class="btn btn-primary w-100">
-                                        <i class="fas fa-clipboard-list me-2"></i>Take Attendance
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#" class="btn btn-info w-100">
-                                        <i class="fas fa-history me-2"></i>View Attendance History
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#" class="btn btn-success w-100">
-                                        <i class="fas fa-file-export me-2"></i>Generate Report
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="d-flex gap-3 mt-4">
+              <a href="../views/create_course_form.php" class="btn btn-primary btn-lg">
+                  <i class="fas fa-plus-circle me-2"></i> Add Course
+              </a>
+              <a href="../views/course_information.php" class="btn btn-outline-success btn-lg">
+                  <i class="fas fa-book me-2"></i> Computer Peripheral and Interfacing Course
+              </a>
+          </div>
         </div>
     </div>
 

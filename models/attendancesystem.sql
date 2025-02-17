@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2025 at 10:17 AM
+-- Generation Time: Feb 17, 2025 at 02:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,6 +43,22 @@ INSERT INTO `fingerprint_data` (`id`, `status`, `lastFingerId`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `peripheral_course`
+--
+
+CREATE TABLE `peripheral_course` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `roll` varchar(50) NOT NULL,
+  `registration` varchar(50) NOT NULL,
+  `fingerId` int(11) NOT NULL,
+  `attendance` int(11) DEFAULT 0,
+  `last_date` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_info`
 --
 
@@ -65,7 +81,7 @@ CREATE TABLE `student_info` (
 INSERT INTO `student_info` (`id`, `student_name`, `student_roll`, `student_reg`, `student_session`, `student_email`, `student_phone`, `password`, `fingerId`) VALUES
 (132, 'Prantic Paul', '21102042', '9909', '2020-21', 'pranticpaulshimul@gmail.com', '+8801739509014', '$2y$10$PJR3RhcG.O9R19BXzVi1PuzwOrkF.Q4L2VQK9ah68lqIlkIpPg/r6', 1),
 (133, 'Tuhin', '21102023', '9896', '2020-21', 'shimulpranticpaul@gmail.com', '+8801739509033', '$2y$10$6L2dmrL2QJFo9eT4soypSO85oZv9.3/8FS9bbMuQpmKDLngSkKvOK', 2),
-(143, 'Avishek Sarkar', '21102036', '9902', '2020-21', 'jkkniubioattendance@gmail.com', '+8801726927575', '$2y$10$6JEH3onGKdwESb8ANrepfeC6GjAJWi6V9pzYfmITaXGuCLNrksi4u', 3);
+(145, 'Md Tuhin', '21102021', '9888', '2020-21', 'jkkniubioattendance@gmail.com', '+8801760632265', '$2y$10$4pXNLQUEn/nYIrYu4rzh6.fEMz5LVb/8.uFeXHfTBHoX5.M8mCHZm', 3);
 
 -- --------------------------------------------------------
 
@@ -81,8 +97,16 @@ CREATE TABLE `teacher_info` (
   `teacher_email` varchar(191) NOT NULL,
   `teacher_phone` varchar(20) NOT NULL,
   `is_verified` tinyint(1) DEFAULT 0 COMMENT '0 = No, 1 = Yes',
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `verification_token` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `teacher_info`
+--
+
+INSERT INTO `teacher_info` (`id`, `name`, `designation`, `department`, `teacher_email`, `teacher_phone`, `is_verified`, `password`, `verification_token`) VALUES
+(7, 'Sujan Ali', 'Professor', 'CSE', 'mdtuhin1499@gmail.com', '+8801760632265', 1, '$2y$10$OmLS2.GPUUu8YdZfPixaterOTOhvTjR5CpY76plU.m0JkIIC4yZe2', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,6 +139,15 @@ ALTER TABLE `fingerprint_data`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `peripheral_course`
+--
+ALTER TABLE `peripheral_course`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roll` (`roll`),
+  ADD UNIQUE KEY `registration` (`registration`),
+  ADD UNIQUE KEY `fingerId` (`fingerId`);
+
+--
 -- Indexes for table `student_info`
 --
 ALTER TABLE `student_info`
@@ -145,22 +178,28 @@ ALTER TABLE `fingerprint_data`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `peripheral_course`
+--
+ALTER TABLE `peripheral_course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `teacher_info`
 --
 ALTER TABLE `teacher_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `temp_registrations`
 --
 ALTER TABLE `temp_registrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
