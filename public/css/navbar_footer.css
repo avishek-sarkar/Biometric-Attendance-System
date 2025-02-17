@@ -160,6 +160,15 @@
   padding-right: 1rem;
 }
 
+.card-footer {
+  background-color: #C6E7FF;
+  border-top: none;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #000;
+}
+
 .card .btn {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
