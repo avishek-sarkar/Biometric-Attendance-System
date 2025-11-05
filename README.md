@@ -2,7 +2,7 @@
 
 # 🔐 Biometric Attendance Management System
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=2E9EF7&center=true&vCenter=true&width=600&lines=Secure+Attendance+Tracking;Biometric+Authentication;Real-time+Monitoring;Student+%26+Teacher+Portal" alt="Typing SVG" />
+**Secure Attendance Tracking • Biometric Authentication • Real-time Monitoring • Student & Teacher Portal**
 
 [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
@@ -31,7 +31,6 @@
 - [💻 Technology Stack](#-technology-stack)
 - [📁 Project Structure](#-project-structure)
 - [🎓 User Roles](#-user-roles)
-- [📸 Screenshots](#-screenshots)
 - [🔒 Security Features](#-security-features)
 - [🤝 Contributing](#-contributing)
 - [👨‍💻 Developers](#-developers)
@@ -269,7 +268,7 @@ Biometric-Attendance-System/
 │   └── MainDb.sql            # Database creation script
 │
 ├── 📂 views/                  # User interface pages
-│   ├── login.php             # Login page
+│   ├── login_form.php         # Login page
 │   ├── registerForm.html     # Student registration
 │   ├── student_dashboard.php # Student dashboard
 │   ├── teacher_dashboard.php # Teacher dashboard
@@ -318,30 +317,6 @@ Biometric-Attendance-System/
 - View student-wise statistics
 - Export attendance data
 - Manage course settings
-
----
-
-## 📸 Screenshots
-
-### 🏠 Home Page
-<div align="center">
-  <i>User-friendly landing page with quick access to registration and login</i>
-</div>
-
-### 📝 Registration Interface
-<div align="center">
-  <i>Simple and intuitive registration form for students and teachers</i>
-</div>
-
-### 📊 Student Dashboard
-<div align="center">
-  <i>Comprehensive dashboard showing attendance records and statistics</i>
-</div>
-
-### 🎯 Teacher Dashboard
-<div align="center">
-  <i>Advanced monitoring tools for managing courses and tracking attendance</i>
-</div>
 
 ---
 
@@ -499,7 +474,9 @@ Have questions or suggestions? Reach out to us!
 
 ### ⭐ If you find this project useful, please give it a star!
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&pause=1000&color=00F712&center=true&vCenter=true&width=600&lines=Thank+you+for+visiting!;Happy+Coding!+%F0%9F%9A%80;Secure+Attendance%2C+Smart+Future+%F0%9F%94%90" alt="Closing Message" />
+**Thank you for visiting! Happy Coding! 🚀**
+
+**Secure Attendance, Smart Future 🔐**
 
 **Made with ❤️ by the JKKNIU CSE Team**
 
