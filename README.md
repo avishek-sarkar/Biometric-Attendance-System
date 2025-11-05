@@ -238,7 +238,6 @@ For fingerprint scanner integration:
 
 - **PHPMailer** - Email sending functionality
 - **Bootstrap Icons** - Icon library
-- **jQuery** - DOM manipulation (if used)
 - **ESP32/ESP8266** - Hardware integration for fingerprint scanner
 
 </div>
@@ -343,7 +342,7 @@ We welcome contributions! Here's how you can help:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/Biometric-Attendance-System.git
+   git clone https://github.com/avishek-sarkar/Biometric-Attendance-System.git
    ```
 
 2. **Create a Feature Branch**
@@ -478,7 +477,7 @@ Have questions or suggestions? Reach out to us!
 
 **Secure Attendance, Smart Future 🔐**
 
-**Made with ❤️ by the JKKNIU CSE Team**
+**Made with ❤️ by a team of Noobs**
 
 ---
 
