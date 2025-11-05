@@ -171,4 +171,4 @@ This project is open source and available for educational purposes.
 
 ---
 
-*For detailed developer information, visit [DeveloperInfo.php](DeveloperInfo.php)*
+*For detailed information about the development team, including contact details and university information, visit [DeveloperInfo.php](DeveloperInfo.php)*
