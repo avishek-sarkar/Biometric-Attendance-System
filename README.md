@@ -26,10 +26,10 @@
 - [✨ Features](#-features)
 - [🏗️ System Architecture](#️-system-architecture)
 - [💻 Technology Stack](#-technology-stack)
+- [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [📁 Project Structure](#-project-structure)
 - [🎓 User Roles](#-user-roles)
 - [🔒 Security Features](#-security-features)
 - [🤝 Contributing](#-contributing)
@@ -139,6 +139,55 @@ graph TB
 
 ---
 
+## 📁 Project Structure
+
+```
+Biometric-Attendance-System/
+│
+├── 📂 config/                  # Configuration files
+│   ├── db_config.php          # Database configuration
+│   └── README.md
+│
+├── 📂 controllers/            # Business logic controllers
+│   ├── PHPMailer/            # Email library
+│   ├── login.php             # Student login handler
+│   ├── teacher_login.php     # Teacher login handler
+│   ├── attendance_esp.php    # Hardware integration
+│   ├── send_mail.php         # Email sending logic
+│   ├── transfer_data.php     # Data synchronization
+│   └── ... (other controllers)
+│
+├── 📂 models/                 # Database schemas
+│   ├── attendancesystem.sql  # Main database schema
+│   └── MainDb.sql            # Database creation script
+│
+├── 📂 views/                  # User interface pages
+│   ├── login_form.php         # Login page
+│   ├── registerForm.html     # Student registration
+│   ├── student_dashboard.php # Student dashboard
+│   ├── teacher_dashboard.php # Teacher dashboard
+│   ├── fingerprint_scan.php  # Fingerprint enrollment
+│   └── ... (other views)
+│
+├── 📂 core/                   # Core functionality
+│   └── authentication.php     # Authentication logic
+│
+├── 📂 includes/               # Reusable components
+│   ├── navbar.php            # Navigation bar
+│   └── footer.php            # Footer
+│
+├── 📂 public/                 # Public assets
+│   ├── 📂 css/               # Stylesheets
+│   ├── 📂 js/                # JavaScript files
+│   └── 📂 images/            # Images and media
+│
+├── index.php                  # Home page
+├── DeveloperInfo.php          # Developer information
+└── README.md                  # Project documentation
+```
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -241,55 +290,6 @@ For fingerprint scanner integration:
 2. Configure the ESP to connect to your network
 3. Update the ESP endpoint in `controllers/attendance_esp.php`
 4. Ensure the hardware can communicate with the server
-
----
-
-## 📁 Project Structure
-
-```
-Biometric-Attendance-System/
-│
-├── 📂 config/                  # Configuration files
-│   ├── db_config.php          # Database configuration
-│   └── README.md
-│
-├── 📂 controllers/            # Business logic controllers
-│   ├── PHPMailer/            # Email library
-│   ├── login.php             # Student login handler
-│   ├── teacher_login.php     # Teacher login handler
-│   ├── attendance_esp.php    # Hardware integration
-│   ├── send_mail.php         # Email sending logic
-│   ├── transfer_data.php     # Data synchronization
-│   └── ... (other controllers)
-│
-├── 📂 models/                 # Database schemas
-│   ├── attendancesystem.sql  # Main database schema
-│   └── MainDb.sql            # Database creation script
-│
-├── 📂 views/                  # User interface pages
-│   ├── login_form.php         # Login page
-│   ├── registerForm.html     # Student registration
-│   ├── student_dashboard.php # Student dashboard
-│   ├── teacher_dashboard.php # Teacher dashboard
-│   ├── fingerprint_scan.php  # Fingerprint enrollment
-│   └── ... (other views)
-│
-├── 📂 core/                   # Core functionality
-│   └── authentication.php     # Authentication logic
-│
-├── 📂 includes/               # Reusable components
-│   ├── navbar.php            # Navigation bar
-│   └── footer.php            # Footer
-│
-├── 📂 public/                 # Public assets
-│   ├── 📂 css/               # Stylesheets
-│   ├── 📂 js/                # JavaScript files
-│   └── 📂 images/            # Images and media
-│
-├── index.php                  # Home page
-├── DeveloperInfo.php          # Developer information
-└── README.md                  # Project documentation
-```
 
 ---
 
