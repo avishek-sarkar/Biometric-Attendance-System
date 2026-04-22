@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔐 Biometric Attendance Management System
+# Biometric Attendance Management System
 
 **Secure Attendance Tracking • Biometric Authentication • Real-time Monitoring • Student & Teacher Portal**
 
@@ -25,10 +25,10 @@
 
 - [✨ Features](#-features)
 - [🏗️ System Architecture](#️-system-architecture)
+- [💻 Technology Stack](#-technology-stack)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [💻 Technology Stack](#-technology-stack)
 - [📁 Project Structure](#-project-structure)
 - [🎓 User Roles](#-user-roles)
 - [🔒 Security Features](#-security-features)
@@ -45,27 +45,27 @@
 
 | Feature | Description |
 |---------|-------------|
-| 🔐 **Biometric Authentication** | Secure fingerprint-based attendance marking |
-| 👨‍🎓 **Student Portal** | Easy registration and attendance tracking |
-| 👨‍🏫 **Teacher Dashboard** | Comprehensive attendance management and monitoring |
-| 📧 **Email Verification** | Secure account verification via email |
-| 📊 **Real-time Reports** | Instant attendance statistics and analytics |
-| 🔄 **Automated Sync** | Seamless data synchronization with hardware |
-| 🔒 **Password Security** | Encrypted passwords and secure password reset |
-| 📱 **Responsive Design** | Mobile-friendly interface using Bootstrap 5 |
+|  **Biometric Authentication** | Secure fingerprint-based attendance marking |
+|  **Student Portal** | Easy registration and attendance tracking |
+|  **Teacher Dashboard** | Comprehensive attendance management and monitoring |
+|  **Email Verification** | Secure account verification via email |
+|  **Real-time Reports** | Instant attendance statistics and analytics |
+|  **Automated Sync** | Seamless data synchronization with hardware |
+|  **Password Security** | Encrypted passwords and secure password reset |
+|  **Responsive Design** | Mobile-friendly interface using Bootstrap 5 |
 
 </div>
 
 ### Key Highlights
 
-- ✅ **No Proxy Attendance** - Biometric verification prevents fraudulent attendance
-- ✅ **Quick Registration** - Simple and fast student/teacher registration process
-- ✅ **Automated Tracking** - Real-time attendance recording with timestamps
-- ✅ **Email Notifications** - Automated email alerts for registration and verification
-- ✅ **Course Management** - Create and manage multiple courses efficiently
-- ✅ **Attendance History** - Complete attendance records with date-wise tracking
-- ✅ **Secure Access** - Role-based authentication system
-- ✅ **Hardware Integration** - ESP-based fingerprint sensor integration
+- **No Proxy Attendance** - Biometric verification prevents fraudulent attendance
+- **Quick Registration** - Simple and fast student/teacher registration process
+- **Automated Tracking** - Real-time attendance recording with timestamps
+- **Email Notifications** - Automated email alerts for registration and verification
+- **Course Management** - Create and manage multiple courses efficiently
+- **Attendance History** - Complete attendance records with date-wise tracking
+- **Secure Access** - Role-based authentication system
+- **Hardware Integration** - ESP-based fingerprint sensor integration
 
 ---
 
@@ -109,6 +109,33 @@ graph TB
    - Generate course-wise reports
    - Export attendance data
    - Manage student records
+
+---
+
+## 💻 Technology Stack
+
+<div align="center">
+
+### Frontend
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
+
+### Backend
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+### Libraries & Tools
+
+- **PHPMailer** - Email sending functionality
+- **Bootstrap Icons** - Icon library
+- **ESP32/ESP8266** - Hardware integration for fingerprint scanner
+
+</div>
 
 ---
 
@@ -217,33 +244,6 @@ For fingerprint scanner integration:
 
 ---
 
-## 💻 Technology Stack
-
-<div align="center">
-
-### Frontend
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
-
-### Backend
-
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-
-### Libraries & Tools
-
-- **PHPMailer** - Email sending functionality
-- **Bootstrap Icons** - Icon library
-- **ESP32/ESP8266** - Hardware integration for fingerprint scanner
-
-</div>
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -321,16 +321,16 @@ Biometric-Attendance-System/
 
 ## 🔒 Security Features
 
-- 🔐 **Password Hashing** - Bcrypt encryption for all passwords
-- 🔑 **Session Management** - Secure PHP session handling
-- ✉️ **Email Verification** - Two-factor verification via email
-- 🛡️ **SQL Injection Prevention** - Prepared statements and parameterized queries
-- 🚫 **XSS Protection** - Input sanitization and output encoding
-- 🔒 **CSRF Protection** - Token-based form validation
-- 👤 **Role-Based Access** - Separate authentication for students and teachers
-- ⏱️ **Session Timeout** - Automatic logout after inactivity
-- 🔄 **Password Reset** - Secure password recovery mechanism
-- 📝 **Audit Logs** - Attendance records with timestamps
+- **Password Hashing** - Bcrypt encryption for all passwords
+- **Session Management** - Secure PHP session handling
+- **Email Verification** - Two-factor verification via email
+- **SQL Injection Prevention** - Prepared statements and parameterized queries
+- **XSS Protection** - Input sanitization and output encoding
+- **CSRF Protection** - Token-based form validation
+- **Role-Based Access** - Separate authentication for students and teachers
+- **Session Timeout** - Automatic logout after inactivity
+- **Password Reset** - Secure password recovery mechanism
+- **Audit Logs** - Attendance records with timestamps
 
 ---
 
@@ -369,16 +369,6 @@ We welcome contributions! Here's how you can help:
    - Provide a clear description of changes
    - Link any relevant issues
    - Wait for review
-
-### Contribution Guidelines
-
-- ✅ Follow PSR-12 coding standards for PHP
-- ✅ Write meaningful commit messages
-- ✅ Update documentation for new features
-- ✅ Add comments for complex logic
-- ✅ Test on multiple browsers
-- ✅ Ensure responsive design
-- ✅ No breaking changes without discussion
 
 ---
 
@@ -463,8 +453,6 @@ Have questions or suggestions? Reach out to us!
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/avishek-sarkar/Biometric-Attendance-System)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:avishek1416@gmail.com)
 
-**Repository:** [Biometric-Attendance-System](https://github.com/avishek-sarkar/Biometric-Attendance-System)
-
 </div>
 
 ---
@@ -474,8 +462,6 @@ Have questions or suggestions? Reach out to us!
 ### ⭐ If you find this project useful, please give it a star!
 
 **Thank you for visiting! Happy Coding! 🚀**
-
-**Secure Attendance, Smart Future 🔐**
 
 **Made with ❤️ by a team of Noobs**
 
