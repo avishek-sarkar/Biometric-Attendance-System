@@ -1,154 +1,217 @@
-<div align="center">
-
 # Biometric Attendance Management System
 
-**Secure Attendance Tracking • Biometric Authentication • Real-time Monitoring • Student & Teacher Portal**
+## Project Overview
+The Biometric Attendance Management System is a comprehensive, IoT-based web application designed to fully automate and secure the process of recording attendance. By seamlessly integrating biometric hardware (fingerprint sensors) with a cloud-connected web interface, this system provides educational institutions with a reliable, scalable, and highly accurate solution for daily attendance tracking.
 
-[![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://www.javascript.com/)
+## Why It Matters
+Traditional manual attendance systems relying on paper logs or ID cards are highly vulnerable to inefficiencies, errors, and time fraud. This system directly solves these challenges by:
 
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)](https://github.com/avishek-sarkar/Biometric-Attendance-System)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+* **Eliminating Proxy Attendance:** Biometric verification ensures that a student must be physically present to mark their attendance.
+* **Reducing Administrative Burden:** Automating the tracking process saves teachers valuable time, allowing them to focus entirely on instruction rather than manual record-keeping.
+* **Enhancing Data Security:** Centralized database storage eliminates the risk of lost or tampered physical records.
+* **Providing Real-Time Insights:** Administrators and teachers can instantly monitor attendance logs, track statistics, and generate automated reports.
 
----
+## Technology Stack
 
-### 🎯 Simplifying attendance tracking with secure biometric authentication
+**Frontend**
+* HTML5, CSS3, JavaScript (Vanilla)
+* Bootstrap 5 Framework
 
-</div>
+**Backend & Database**
+* PHP (Raw)
+* MySQL
 
----
+**Hardware (IoT)**
+* **Microcontroller:** ESP8266 (with built-in Wi-Fi)
+* **Biometric:** R307 Fingerprint Sensor (UART communication)
+* **Display & Feedback:** 16x2 LCD Display (I2C), LEDs (Status indicators), Buzzer (Audio alerts)
+* **Power & Control:** 5V Power Supply / Battery, Physical Switches
 
-## 📋 Table of Contents
+## System Architecture and Workflow
 
-- [✨ Features](#-features)
-- [🏗️ System Architecture](#️-system-architecture)
-- [💻 Technology Stack](#-technology-stack)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [🎓 User Roles](#-user-roles)
-- [🔒 Security Features](#-security-features)
-- [🤝 Contributing](#-contributing)
-- [👨‍💻 Developers](#-developers)
-- [📄 License](#-license)
-- [📧 Contact](#-contact)
-
----
-
-## ✨ Features
-
-<div align="center">
-
-| Feature | Description |
-|---------|-------------|
-|  **Biometric Authentication** | Secure fingerprint-based attendance marking |
-|  **Student Portal** | Easy registration and attendance tracking |
-|  **Teacher Dashboard** | Comprehensive attendance management and monitoring |
-|  **Email Verification** | Secure account verification via email |
-|  **Real-time Reports** | Instant attendance statistics and analytics |
-|  **Automated Sync** | Seamless data synchronization with hardware |
-|  **Password Security** | Encrypted passwords and secure password reset |
-|  **Responsive Design** | Mobile-friendly interface using Bootstrap 5 |
-
-</div>
-
-### Key Highlights
-
-- **No Proxy Attendance** - Biometric verification prevents fraudulent attendance
-- **Quick Registration** - Simple and fast student/teacher registration process
-- **Automated Tracking** - Real-time attendance recording with timestamps
-- **Email Notifications** - Automated email alerts for registration and verification
-- **Course Management** - Create and manage multiple courses efficiently
-- **Attendance History** - Complete attendance records with date-wise tracking
-- **Secure Access** - Role-based authentication system
-- **Hardware Integration** - ESP-based fingerprint sensor integration
-
----
-
-## 🏗️ System Architecture
+The system bridges physical hardware with a centralized web application. Students and teachers interact with their respective dashboards, while the hardware node handles the physical authentication and syncs real-time data to the server.
 
 ```mermaid
-graph TB
-    A[👤 User] -->|Access| B[Web Interface]
-    B --> C{Authentication}
+graph TD
+    A[User] -->|Access| B(Web Interface)
+    B --> C{Authentication Role}
     C -->|Student| D[Student Dashboard]
     C -->|Teacher| E[Teacher Dashboard]
-    D --> F[Mark Attendance]
-    D --> G[View Records]
-    E --> H[Create Courses]
-    E --> I[Monitor Attendance]
-    E --> J[Generate Reports]
-    F --> K[🔐 Fingerprint Scanner]
-    K --> L[(Database)]
-    H --> L
-    I --> L
-    J --> L
-    G --> L
+    
+    D -->|Enroll/Verify| F[ESP8266 Node + R307 Sensor]
+    F -->|Wi-Fi Sync| G[(MySQL Central Database)]
+    
+    E -->|Create & Manage Courses| G
+    E -->|Start Attendance Session| F
+    E -->|Generate & Export| H[Excel Reports]
 ```
 
-### Workflow
+## Database Schema
 
-1. **Registration Phase**
-   - Student/Teacher creates account
-   - Email verification sent
-   - Account activated upon verification
-   - Fingerprint enrollment (students only)
+```mermaid
+erDiagram
+    STUDENT ||--o{ ATTENDANCE : "marks"
+    TEACHER ||--o{ COURSE : "manages"
+    COURSE ||--o{ ATTENDANCE : "records"
+    
+    STUDENT {
+        int ID PK
+        string FullName
+        string RollNumber
+        string RegistrationNo
+        string Session
+        string Email
+        int FingerprintID
+    }
+    
+    TEACHER {
+        int ID PK
+        string FullName
+        string Designation
+        string Department
+        string Email
+    }
+    
+    COURSE {
+        string CourseCode PK
+        string Session
+        int TeacherID FK
+    }
+    
+    ATTENDANCE {
+        int ID PK
+        string CourseCode FK
+        int StudentID FK
+        datetime Timestamp
+    }
+```
 
-2. **Attendance Marking**
-   - Student scans fingerprint on device
-   - System validates fingerprint ID
-   - Attendance recorded with timestamp
-   - Data synced to database
+## Key Capabilities and Features
+* **Strict Biometric Authentication:** Utilizes the R307 sensor for secure, spoof-resistant physical presence tracking.
+* **Dedicated Role Portals:** Isolated and secure dashboards tailored specifically for Students and Teachers.
+* **Email Verification:** Automated email alerts (via PHPMailer) ensure secure account registration.
+* **Advanced Course Management:** Teachers can dynamically create courses, start attendance timers, and automatically generate end-of-course Excel attendance sheets.
+* **Hardware Audio-Visual Feedback:** The physical scanner features an LCD display, multi-color LEDs, and buzzers to provide instant confirmation of successful or failed attendance attempts.
 
-3. **Monitoring Phase**
-   - Teachers view real-time attendance
-   - Generate course-wise reports
-   - Export attendance data
-   - Manage student records
+### System Showcase (Demo)
 
----
+| Hardware Front | Hardware Side | Hardware Back |
+| --- | --- | --- |
+| ![Hardware Front](documentation\Hardware1.png) | ![Hardware Side](documentation\Hardware2.png) | ![Hardware Back](documentation\Hardware3.png) |
 
-## 💻 Technology Stack
+| Home Page |
+| :---: |
+| ![Home Page](documentation/HomePage.png) |
 
-<div align="center">
+| Authentication |
+| :---: |
+| ![Login Page](documentation\LoginPage.png) |
 
-### Frontend
+| Student Registration Portal | Teacher Registration Portal |
+| --- | --- |
+| ![Student Registration](documentation\StudentRegistration.png) | ![Teacher Registration](documentation\TeacherRegistration.png) |
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
+| Email Verification | Fingerprint Registration |
+| --- | --- |
+| ![Email Verification](documentation\EmailVerification.png)| ![Fingerprint Registration](documentation\FingerPrintRegistration.png)|
 
-### Backend
+| Student Dashboard | Teacher Dashboard |
+| --- | --- |
+| ![Student Dashboard](documentation\StudentDashboard.png) | ![Teacher Dashboard](documentation\TeacherDashboard.png) |
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+| Course Administration |
+| :---: |
+| ![Manage Course](documentation\ManageCourses.png) |
 
-### Libraries & Tools
+## Installation and Setup
 
-- **PHPMailer** - Email sending functionality
-- **Bootstrap Icons** - Icon library
-- **ESP32/ESP8266** - Hardware integration for fingerprint scanner
+### Prerequisites
+* **PHP** >= 7.4
+* **MySQL** >= 5.7 or **MariaDB** >= 10.4
+* **Web Server:** Apache/Nginx (XAMPP/WAMP recommended for local development)
+* **Hardware:** ESP8266 and R307 Fingerprint Sensor
 
-</div>
+### Setup Steps
 
----
+#### 1. Clone the Repository
 
-## 📁 Project Structure
+```bash
+git clone https://github.com/your-username/Biometric-Attendance-System.git
+cd Biometric-Attendance-System
+```
+
+#### 2. Database Configuration
+
+1. Create a MySQL database named `attendancesystem`.
+2. Import the SQL schema located at:
+
+   ```text
+   models/attendancesystem.sql
+   ```
+
+3. Update the database credentials in:
+
+   ```text
+   config/db_config.php
+   ```
+
+#### 3. Email Configuration
+
+1. Open:
+
+   ```text
+   controllers/send_mail.php
+   ```
+
+2. Configure the following SMTP settings:
+
+   - Host
+   - Username
+   - App Password
+   - Port
+
+3. Save the file after updating your email credentials.
+
+#### 4. Hardware Node Setup
+
+1. Connect the ESP8266 with:
+   - R307 Fingerprint Sensor
+   - LCD Display
+   - LEDs
+   - Buzzer
+
+2. Follow the hardware wiring diagram used in the project.
+
+3. Update the API endpoint URLs in the ESP8266 firmware.
+
+   Example:
+
+   ```text
+   controllers/attendance_esp.php
+   ```
+
+#### 5. Launch the Application
+
+1. Start Apache and MySQL services.
+2. Open your browser and navigate to:
+
+   ```text
+   http://localhost/Biometric-Attendance-System
+   ```
+
+3. The system is now ready for fingerprint enrollment and attendance tracking.
+
+
+## Project Structure
 
 ```
 Biometric-Attendance-System/
 │
-├── 📂 config/                  # Configuration files
-│   ├── db_config.php          # Database configuration
+├── config/                   # Configuration files
+│   ├── db_config.php         # Database configuration
 │   └── README.md
 │
-├── 📂 controllers/            # Business logic controllers
+├── controllers/              # Business logic controllers
 │   ├── PHPMailer/            # Email library
 │   ├── login.php             # Student login handler
 │   ├── teacher_login.php     # Teacher login handler
@@ -157,316 +220,58 @@ Biometric-Attendance-System/
 │   ├── transfer_data.php     # Data synchronization
 │   └── ... (other controllers)
 │
-├── 📂 models/                 # Database schemas
+├── models/                   # Database schemas
 │   ├── attendancesystem.sql  # Main database schema
 │   └── MainDb.sql            # Database creation script
 │
-├── 📂 views/                  # User interface pages
-│   ├── login_form.php         # Login page
+├── views/                    # User interface pages
+│   ├── login_form.php        # Login page
 │   ├── registerForm.html     # Student registration
 │   ├── student_dashboard.php # Student dashboard
 │   ├── teacher_dashboard.php # Teacher dashboard
 │   ├── fingerprint_scan.php  # Fingerprint enrollment
 │   └── ... (other views)
 │
-├── 📂 core/                   # Core functionality
-│   └── authentication.php     # Authentication logic
+├── core/                     # Core functionality
+│   └── authentication.php    # Authentication logic
 │
-├── 📂 includes/               # Reusable components
+├── includes/                 # Reusable components
 │   ├── navbar.php            # Navigation bar
 │   └── footer.php            # Footer
 │
-├── 📂 public/                 # Public assets
-│   ├── 📂 css/               # Stylesheets
-│   ├── 📂 js/                # JavaScript files
-│   └── 📂 images/            # Images and media
+├── public/                   # Public assets
+│   ├── css/                  # Stylesheets
+│   ├── js/                   # JavaScript files
+│   └── images/               # Images and media
 │
-├── index.php                  # Home page
-├── DeveloperInfo.php          # Developer information
-└── README.md                  # Project documentation
+├── index.php                 # Home page
+├── DeveloperInfo.php         # Developer information
+├── documentation             # Project documentation
+└── README.md                 # Project documentation
 ```
 
----
 
-## 🚀 Getting Started
+## Future Enhancements
 
-### Prerequisites
+- **Capacitive Sensor Upgrade** - Replace the current optical fingerprint sensor with a capacitive sensor to improve biometric accuracy and security.
 
-Before you begin, ensure you have the following installed:
+- **Hardware Independence** - Store fingerprint templates in hexadecimal format to support multiple attendance devices using a centralized database.
 
-- **PHP** >= 7.4
-- **MySQL** >= 5.7 or **MariaDB** >= 10.4
-- **Apache/Nginx** Web Server
-- **XAMPP/WAMP/LAMP** (Recommended for local development)
-- **Web Browser** (Chrome, Firefox, Safari, Edge)
-- **Fingerprint Scanner** (ESP-based module for biometric features)
+- **Teacher Biometric Triggers** - Allow teachers to start and stop attendance sessions directly from the fingerprint scanner.
 
-### Installation
+- **Enhanced Synchronization** - Implement offline queuing and synchronization mechanisms to prevent data loss during network interruptions.
 
-#### 1️⃣ Clone the Repository
+- **Advanced Analytics Dashboard** - Add attendance insights, reporting tools, and trend visualization features.
 
-```bash
-git clone https://github.com/avishek-sarkar/Biometric-Attendance-System.git
-cd Biometric-Attendance-System
-```
 
-#### 2️⃣ Database Setup
+## Developer Information
 
-**Option A: Using phpMyAdmin**
+![Developer Information](documentation\DeveloperInfo.png)
 
-1. Open phpMyAdmin in your browser
-2. Create a new database named `attendancesystem`
-3. Import the SQL file: `models/attendancesystem.sql`
+## Closing Remarks
 
-**Option B: Using MySQL Command Line**
+Thank you for exploring the **Biometric Attendance Management System**.
 
-```bash
-mysql -u root -p
-```
-
-```sql
-CREATE DATABASE attendancesystem;
-USE attendancesystem;
-SOURCE models/attendancesystem.sql;
-EXIT;
-```
-
-#### 3️⃣ Configure Database Connection
-
-Edit `config/db_config.php` with your database credentials:
-
-```php
-<?php
-$host = 'localhost';
-$dbname = 'attendancesystem';
-$username = 'your_username';  // Default: root
-$password = 'your_password';  // Default: empty
-
-$conn = new mysqli($host, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
-```
-
-#### 4️⃣ Email Configuration
-
-Configure email settings in the mail controller for verification emails:
-
-1. Navigate to `controllers/send_mail.php`
-2. Update SMTP settings with your email credentials
-
-```php
-$mail->Host = 'smtp.gmail.com';
-$mail->Username = 'your-email@gmail.com';
-$mail->Password = 'your-app-password';
-$mail->Port = 587;
-```
-
-> **Note:** For Gmail, you need to enable "Less secure app access" or use App Passwords.
-
-#### 5️⃣ Start the Application
-
-**Using XAMPP:**
-
-1. Copy the project folder to `htdocs` directory
-2. Start Apache and MySQL from XAMPP Control Panel
-3. Open browser and navigate to: `http://localhost/Biometric-Attendance-System`
-
-**Using PHP Built-in Server:**
-
-```bash
-php -S localhost:8000
-```
-
-Then open: `http://localhost:8000`
-
-#### 6️⃣ Hardware Setup (Optional)
-
-For fingerprint scanner integration:
-
-1. Connect ESP-based fingerprint module
-2. Configure the ESP to connect to your network
-3. Update the ESP endpoint in `controllers/attendance_esp.php`
-4. Ensure the hardware can communicate with the server
+This project demonstrates the integration of biometric authentication, IoT hardware, and web technologies to provide a secure, automated, and reliable attendance management solution. By eliminating proxy attendance and streamlining record management, the system addresses real-world challenges faced by educational institutions. Feel free to explore the codebase, fork the repository, and contribute ideas for future improvements.
 
 ---
-
-## 🎓 User Roles
-
-### 👨‍🎓 Student
-
-- Register with personal and academic details
-- Verify email address
-- Enroll fingerprint for attendance
-- Mark attendance using fingerprint scanner
-- View personal attendance records
-- Track attendance percentage
-- Update profile information
-- Reset password
-
-### 👨‍🏫 Teacher
-
-- Register with professional credentials
-- Create and manage courses
-- Add students to courses
-- Monitor real-time attendance
-- Generate attendance reports
-- View student-wise statistics
-- Export attendance data
-- Manage course settings
-
----
-
-## 🔒 Security Features
-
-- **Password Hashing** - Bcrypt encryption for all passwords
-- **Session Management** - Secure PHP session handling
-- **Email Verification** - Two-factor verification via email
-- **SQL Injection Prevention** - Prepared statements and parameterized queries
-- **XSS Protection** - Input sanitization and output encoding
-- **CSRF Protection** - Token-based form validation
-- **Role-Based Access** - Separate authentication for students and teachers
-- **Session Timeout** - Automatic logout after inactivity
-- **Password Reset** - Secure password recovery mechanism
-- **Audit Logs** - Attendance records with timestamps
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-### How to Contribute
-
-1. **Fork the Repository**
-   ```bash
-   git clone https://github.com/avishek-sarkar/Biometric-Attendance-System.git
-   ```
-
-2. **Create a Feature Branch**
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-
-3. **Make Your Changes**
-   - Write clean, documented code
-   - Follow existing code style
-   - Test your changes thoroughly
-
-4. **Commit Your Changes**
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-
-5. **Push to the Branch**
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-
-6. **Open a Pull Request**
-   - Provide a clear description of changes
-   - Link any relevant issues
-   - Wait for review
-
----
-
-## 👨‍💻 Developers
-
-<div align="center">
-
-### 🌟 Meet the Team
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="public/images/avishek.png" width="150px" alt="Avishek Sarkar"/>
-      <br />
-      <sub><b>Avishek Sarkar</b></sub>
-      <br />
-      <sub>Roll: 21102035</sub>
-      <br />
-      <sub>Reg: 9902</sub>
-      <br />
-      <sub>📧 avishek1416@gmail.com</sub>
-    </td>
-    <td align="center">
-      <img src="public/images/prantic.jpg" width="150px" alt="Prantic Paul"/>
-      <br />
-      <sub><b>Prantic Paul</b></sub>
-      <br />
-      <sub>Roll: 21102042</sub>
-      <br />
-      <sub>Reg: 9909</sub>
-      <br />
-      <sub>📧 pranticshimul@gmail.com</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="public/images/tuhin.jpg" width="150px" alt="Md. Tuhin"/>
-      <br />
-      <sub><b>Md. Tuhin</b></sub>
-      <br />
-      <sub>Roll: 21102021</sub>
-      <br />
-      <sub>Reg: 9888</sub>
-      <br />
-      <sub>📧 mdtuhin1499@gmail.com</sub>
-    </td>
-    <td align="center">
-      <img src="public/images/zinnia.jpg" width="150px" alt="Zinnia Tasnim Rifat"/>
-      <br />
-      <sub><b>Zinnia Tasnim Rifat</b></sub>
-      <br />
-      <sub>Roll: 21102004</sub>
-      <br />
-      <sub>Reg: 9871</sub>
-      <br />
-      <sub>📧 zinnia660@gmail.com</sub>
-    </td>
-  </tr>
-</table>
-
-**Session:** 2020-2021  
-**Institution:** Department of Computer Science & Engineering, JKKNIU
-
-</div>
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📧 Contact
-
-<div align="center">
-
-### Get in Touch
-
-Have questions or suggestions? Reach out to us!
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/avishek-sarkar/Biometric-Attendance-System)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:avishek1416@gmail.com)
-
-</div>
-
----
-
-<div align="center">
-
-### ⭐ If you find this project useful, please give it a star!
-
-**Thank you for visiting! Happy Coding! 🚀**
-
-**Made with ❤️ by a team of Noobs**
-
----
-
-*Last Updated: November 2025*
-
-</div>
