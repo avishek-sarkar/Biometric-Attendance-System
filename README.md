@@ -87,11 +87,16 @@ erDiagram
 ```
 
 ## Key Capabilities and Features
-* **Strict Biometric Authentication:** Utilizes the R307 sensor for secure, spoof-resistant physical presence tracking.
-* **Dedicated Role Portals:** Isolated and secure dashboards tailored specifically for Students and Teachers.
-* **Email Verification:** Automated email alerts (via PHPMailer) ensure secure account registration.
-* **Advanced Course Management:** Teachers can dynamically create courses, start attendance timers, and automatically generate end-of-course Excel attendance sheets.
-* **Hardware Audio-Visual Feedback:** The physical scanner features an LCD display, multi-color LEDs, and buzzers to provide instant confirmation of successful or failed attendance attempts.
+
+- **Strict Biometric Authentication:** Utilizes the R307 sensor for secure, spoof-resistant physical presence tracking.
+
+- **Dedicated Role Portals:** Isolated and secure dashboards tailored specifically for Students and Teachers.
+
+- **Email Verification:** Automated email alerts (via PHPMailer) ensure secure account registration.
+
+- **Advanced Course Management:** Teachers can dynamically create courses, start attendance timers, and automatically generate end-of-course Excel attendance sheets.
+
+- **Hardware Audio-Visual Feedback:** The physical scanner features an LCD display, multi-color LEDs, and buzzers to provide instant confirmation of successful or failed attendance attempts.
 
 ### System Showcase (Demo)
 
@@ -251,15 +256,15 @@ Biometric-Attendance-System/
 
 ## Future Enhancements
 
-- **Capacitive Sensor Upgrade** - Replace the current optical fingerprint sensor with a capacitive sensor to improve biometric accuracy and security.
+- Replace the current optical fingerprint sensor with a capacitive sensor to improve biometric accuracy and security.
 
-- **Hardware Independence** - Store fingerprint templates in hexadecimal format to support multiple attendance devices using a centralized database.
+- Store fingerprint templates in hexadecimal format to support multiple attendance devices using a centralized database.
 
-- **Teacher Biometric Triggers** - Allow teachers to start and stop attendance sessions directly from the fingerprint scanner.
+- Allow teachers to start and stop attendance sessions directly from the fingerprint scanner.
 
-- **Enhanced Synchronization** - Implement offline queuing and synchronization mechanisms to prevent data loss during network interruptions.
+- Implement offline queuing and synchronization mechanisms to prevent data loss during network interruptions.
 
-- **Advanced Analytics Dashboard** - Add attendance insights, reporting tools, and trend visualization features.
+- Add attendance insights, reporting tools, and trend visualization features.
 
 ## Developer Information
 
