@@ -6,10 +6,13 @@ The Biometric Attendance Management System is a comprehensive, IoT-based web app
 ## Why It Matters
 Traditional manual attendance systems relying on paper logs or ID cards are highly vulnerable to inefficiencies, errors, and time fraud. This system directly solves these challenges by:
 
-* **Eliminating Proxy Attendance:** Biometric verification ensures that a student must be physically present to mark their attendance.
-* **Reducing Administrative Burden:** Automating the tracking process saves teachers valuable time, allowing them to focus entirely on instruction rather than manual record-keeping.
-* **Enhancing Data Security:** Centralized database storage eliminates the risk of lost or tampered physical records.
-* **Providing Real-Time Insights:** Administrators and teachers can instantly monitor attendance logs, track statistics, and generate automated reports.
+- **Eliminating Proxy Attendance:** Biometric verification ensures that a student must be physically present to mark their attendance.
+
+- **Reducing Administrative Burden:** Automating the tracking process saves teachers valuable time, allowing them to focus entirely on instruction rather than manual record-keeping.
+
+- **Enhancing Data Security:** Centralized database storage eliminates the risk of lost or tampered physical records.
+
+- **Providing Real-Time Insights:** Administrators and teachers can instantly monitor attendance logs, track statistics, and generate automated reports.
 
 ## Technology Stack
 
