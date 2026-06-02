@@ -95,9 +95,9 @@ erDiagram
 
 ### System Showcase (Demo)
 
-| Hardware Front | Hardware Side | Hardware Back |
-| --- | --- | --- |
-| ![Hardware Front](documentation/Hardware1.png) | ![Hardware Side](documentation/Hardware2.png) | ![Hardware Back](documentation/Hardware3.png) |
+| Hardware Front view | Hardware Side View | Hardware Back View |
+| :---: | :---: | :---: |
+| ![Hardware Front View](documentation/Hardware1.png) | ![Hardware Side View](documentation/Hardware2.png) | ![Hardware Back view](documentation/Hardware3.png) |
 
 | Home Page |
 | :---: |
@@ -107,17 +107,17 @@ erDiagram
 | :---: |
 | ![Login Page](documentation/LoginPage.png) |
 
-| Student Registration Portal | Teacher Registration Portal |
-| --- | --- |
-| ![Student Registration](documentation/StudentRegistration.png) | ![Teacher Registration](documentation/TeacherRegistration.png) |
+| Teacher Registration Portal |
+| :---: |
+| ![Teacher Registration](documentation/TeacherRegistration.png) |
 
-| Email Verification | Fingerprint Registration |
-| --- | --- |
-| ![Email Verification](documentation/EmailVerification.png)| ![Fingerprint Registration](documentation/FingerPrintRegistration.png)|
+| Fingerprint Registration |
+| :---: |
+| ![Fingerprint Registration](documentation/FingerPrintRegistration.png)|
 
-| Student Dashboard | Teacher Dashboard |
-| --- | --- |
-| ![Student Dashboard](documentation/StudentDashboard.png) | ![Teacher Dashboard](documentation/TeacherDashboard.png) |
+| Student Dashboard |
+| :---: |
+| ![Student Dashboard](documentation/StudentDashboard.png) |
 
 | Course Administration |
 | :---: |
@@ -201,7 +201,6 @@ cd Biometric-Attendance-System
 
 3. The system is now ready for fingerprint enrollment and attendance tracking.
 
-
 ## Project Structure
 
 ```
@@ -250,7 +249,6 @@ Biometric-Attendance-System/
 └── README.md                 # Project documentation
 ```
 
-
 ## Future Enhancements
 
 - **Capacitive Sensor Upgrade** - Replace the current optical fingerprint sensor with a capacitive sensor to improve biometric accuracy and security.
@@ -262,7 +260,6 @@ Biometric-Attendance-System/
 - **Enhanced Synchronization** - Implement offline queuing and synchronization mechanisms to prevent data loss during network interruptions.
 
 - **Advanced Analytics Dashboard** - Add attendance insights, reporting tools, and trend visualization features.
-
 
 ## Developer Information
 
