@@ -97,7 +97,7 @@ erDiagram
 
 | Hardware Front | Hardware Side | Hardware Back |
 | --- | --- | --- |
-| ![Hardware Front](documentation\Hardware1.png) | ![Hardware Side](documentation\Hardware2.png) | ![Hardware Back](documentation\Hardware3.png) |
+| ![Hardware Front](documentation/Hardware1.png) | ![Hardware Side](documentation/Hardware2.png) | ![Hardware Back](documentation/Hardware3.png) |
 
 | Home Page |
 | :---: |
@@ -105,23 +105,23 @@ erDiagram
 
 | Authentication |
 | :---: |
-| ![Login Page](documentation\LoginPage.png) |
+| ![Login Page](documentation/LoginPage.png) |
 
 | Student Registration Portal | Teacher Registration Portal |
 | --- | --- |
-| ![Student Registration](documentation\StudentRegistration.png) | ![Teacher Registration](documentation\TeacherRegistration.png) |
+| ![Student Registration](documentation/StudentRegistration.png) | ![Teacher Registration](documentation/TeacherRegistration.png) |
 
 | Email Verification | Fingerprint Registration |
 | --- | --- |
-| ![Email Verification](documentation\EmailVerification.png)| ![Fingerprint Registration](documentation\FingerPrintRegistration.png)|
+| ![Email Verification](documentation/EmailVerification.png)| ![Fingerprint Registration](documentation/FingerPrintRegistration.png)|
 
 | Student Dashboard | Teacher Dashboard |
 | --- | --- |
-| ![Student Dashboard](documentation\StudentDashboard.png) | ![Teacher Dashboard](documentation\TeacherDashboard.png) |
+| ![Student Dashboard](documentation/StudentDashboard.png) | ![Teacher Dashboard](documentation/TeacherDashboard.png) |
 
 | Course Administration |
 | :---: |
-| ![Manage Course](documentation\ManageCourses.png) |
+| ![Manage Course](documentation/ManageCourses.png) |
 
 ## Installation and Setup
 
@@ -266,7 +266,7 @@ Biometric-Attendance-System/
 
 ## Developer Information
 
-![Developer Information](documentation\DeveloperInfo.png)
+![Developer Information](documentation/DeveloperInfo.png)
 
 ## Closing Remarks
 
