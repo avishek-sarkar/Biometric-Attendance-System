@@ -13,19 +13,19 @@ Traditional manual attendance systems relying on paper logs or ID cards are high
 
 ## Technology Stack
 
-**Frontend**
-* HTML5, CSS3, JavaScript (Vanilla)
-* Bootstrap 5 Framework
+### Frontend
+- HTML5, CSS3, JavaScript (Vanilla)
+- Bootstrap 5 Framework
 
-**Backend & Database**
-* PHP (Raw)
-* MySQL
+### Backend & Database
+- PHP (Raw)
+- MySQL
 
-**Hardware (IoT)**
-* **Microcontroller:** ESP8266 (with built-in Wi-Fi)
-* **Biometric:** R307 Fingerprint Sensor (UART communication)
-* **Display & Feedback:** 16x2 LCD Display (I2C), LEDs (Status indicators), Buzzer (Audio alerts)
-* **Power & Control:** 5V Power Supply / Battery, Physical Switches
+### Hardware (IoT)
+- **Microcontroller:** ESP8266 (with built-in Wi-Fi)
+- **Biometric:** R307 Fingerprint Sensor (UART communication)
+- **Display & Feedback:** 16x2 LCD Display (I2C), LEDs (Status indicators), Buzzer (Audio alerts)
+- **Power & Control:** 5V Power Supply / Battery, Physical Switches
 
 ## System Architecture and Workflow
 
@@ -96,41 +96,41 @@ erDiagram
 
 ### System Showcase (Demo)
 
-| Hardware Front view | Hardware Side View | Hardware Back View |
-| :---: | :---: | :---: |
-| ![Hardware Front View](documentation/Hardware1.png) | ![Hardware Side View](documentation/Hardware2.png) | ![Hardware Back view](documentation/Hardware3.png) |
+-  | [Hardware Front view](documentation/Hardware1.png) | [Hardware Side View](documentation/Hardware2.png) | [Hardware Back View](documentation/Hardware3.png) |
+   | :---: | :---: | :---: |
+   | ![Hardware Front View](documentation/Hardware1.png) | ![Hardware Side View](documentation/Hardware2.png) | ![Hardware Back view](documentation/Hardware3.png) |
 
-| Home Page |
-| :---: |
-| ![Home Page](documentation/HomePage.png) |
+- [**Home Page**](documentation/HomePage.png)
 
-| Authentication |
-| :---: |
-| ![Login Page](documentation/LoginPage.png) |
+![Home Page](documentation/HomePage.png)
 
-| Teacher Registration Portal |
-| :---: |
-| ![Teacher Registration](documentation/TeacherRegistration.png) |
+- [**Authentication**](documentation/LoginPage.png)
 
-| Fingerprint Registration |
-| :---: |
-| ![Fingerprint Registration](documentation/FingerPrintRegistration.png)|
+![Login Page](documentation/LoginPage.png)
 
-| Student Dashboard |
-| :---: |
-| ![Student Dashboard](documentation/StudentDashboard.png) |
+- [**Teacher Registration Portal**](documentation/TeacherRegistration.png)
 
-| Course Administration |
-| :---: |
-| ![Manage Course](documentation/ManageCourses.png) |
+![Teacher Registration](documentation/TeacherRegistration.png)
+
+- [**Fingerprint Registration**](documentation/FingerPrintRegistration.png)
+
+![Fingerprint Registration](documentation/FingerPrintRegistration.png)
+
+- [**Student Dashboard**](documentation/StudentDashboard.png)
+
+![Student Dashboard](documentation/StudentDashboard.png)
+
+- [**Course Administration**](documentation/ManageCourses.png)
+
+  ![Manage Course](documentation/ManageCourses.png)
 
 ## Installation and Setup
 
 ### Prerequisites
-* **PHP** >= 7.4
-* **MySQL** >= 5.7 or **MariaDB** >= 10.4
-* **Web Server:** Apache/Nginx (XAMPP/WAMP recommended for local development)
-* **Hardware:** ESP8266 and R307 Fingerprint Sensor
+- **PHP** >= 7.4
+- **MySQL** >= 5.7 or **MariaDB** >= 10.4
+- **Web Server:** Apache/Nginx (XAMPP/WAMP recommended for local development)
+- **Hardware:** ESP8266 and R307 Fingerprint Sensor
 
 ### Setup Steps
 
