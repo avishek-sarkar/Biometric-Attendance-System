@@ -7,11 +7,8 @@ The Biometric Attendance Management System is a comprehensive, IoT-based web app
 Traditional manual attendance systems relying on paper logs or ID cards are highly vulnerable to inefficiencies, errors, and time fraud. This system directly solves these challenges by:
 
 - **Eliminating Proxy Attendance:** Biometric verification ensures that a student must be physically present to mark their attendance.
-
 - **Reducing Administrative Burden:** Automating the tracking process saves teachers valuable time, allowing them to focus entirely on instruction rather than manual record-keeping.
-
 - **Enhancing Data Security:** Centralized database storage eliminates the risk of lost or tampered physical records.
-
 - **Providing Real-Time Insights:** Administrators and teachers can instantly monitor attendance logs, track statistics, and generate automated reports.
 
 ## Technology Stack
@@ -92,13 +89,9 @@ erDiagram
 ## Key Capabilities and Features
 
 - **Strict Biometric Authentication:** Utilizes the R307 sensor for secure, spoof-resistant physical presence tracking.
-
 - **Dedicated Role Portals:** Isolated and secure dashboards tailored specifically for Students and Teachers.
-
 - **Email Verification:** Automated email alerts (via PHPMailer) ensure secure account registration.
-
 - **Advanced Course Management:** Teachers can dynamically create courses, start attendance timers, and automatically generate end-of-course Excel attendance sheets.
-
 - **Hardware Audio-Visual Feedback:** The physical scanner features an LCD display, multi-color LEDs, and buzzers to provide instant confirmation of successful or failed attendance attempts.
 
 ### System Showcase (Demo)
@@ -260,13 +253,9 @@ Biometric-Attendance-System/
 ## Future Enhancements
 
 - Replace the current optical fingerprint sensor with a capacitive sensor to improve biometric accuracy and security.
-
 - Store fingerprint templates in hexadecimal format to support multiple attendance devices using a centralized database.
-
 - Allow teachers to start and stop attendance sessions directly from the fingerprint scanner.
-
 - Implement offline queuing and synchronization mechanisms to prevent data loss during network interruptions.
-
 - Add attendance insights, reporting tools, and trend visualization features.
 
 ## Developer Information
@@ -275,7 +264,7 @@ Biometric-Attendance-System/
 
 ## Closing Remarks
 
-Thank you for exploring the **Biometric Attendance Management System**.
+Thank you for checking out the **Biometric Attendance Management System**.
 
 This project demonstrates the integration of biometric authentication, IoT hardware, and web technologies to provide a secure, automated, and reliable attendance management solution. By eliminating proxy attendance and streamlining record management, the system addresses real-world challenges faced by educational institutions. Feel free to explore the codebase, fork the repository, and contribute ideas for future improvements.
 
