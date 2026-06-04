@@ -38,51 +38,82 @@ graph TD
     C -->|Student| D[Student Dashboard]
     C -->|Teacher| E[Teacher Dashboard]
     
-    D -->|Enroll/Verify| F[ESP8266 Node + R307 Sensor]
-    F -->|Wi-Fi Sync| G[(MySQL Central Database)]
-    
+    B -->|New Student Registration| I[Registration Form]
+    I -->|Email Verification| J[temp_registrations]
+    J -->|Fingerprint Enrollment| F[ESP8266 Node + R307 Sensor]
+    F -->|Updates status & fingerId| G[(MySQL Database)]
+    G -->|transfer_data.php| K[student_info + course]
+
+    D -->|View Profile & Attendance| G
+
     E -->|Create & Manage Courses| G
-    E -->|Start Attendance Session| F
-    E -->|Generate & Export| H[Excel Reports]
+    E -->|Start Attendance via DB flag| G
+    G -->|ESP8266 polls for status| F
 ```
 
 ## Database Schema
 
 ```mermaid
 erDiagram
-    STUDENT ||--o{ ATTENDANCE : "marks"
-    TEACHER ||--o{ COURSE : "manages"
-    COURSE ||--o{ ATTENDANCE : "records"
+    temp_registrations ||--|| student_info : "verified into"
+    student_info ||--o| course : "attendance tracked via roll"
+    fingerprint_data ||--|| student_info : "signals enrollment"
     
-    STUDENT {
-        int ID PK
-        string FullName
-        string RollNumber
-        string RegistrationNo
-        string Session
-        string Email
-        int FingerprintID
+    student_info {
+        int id PK
+        string student_name
+        string student_roll UK
+        string student_reg UK
+        string student_session
+        string student_email UK
+        string student_phone
+        string password
+        int fingerId
     }
     
-    TEACHER {
-        int ID PK
-        string FullName
-        string Designation
-        string Department
-        string Email
+    teacher_info {
+        int id PK
+        string name
+        string designation
+        string department
+        string teacher_email UK
+        string teacher_phone
+        boolean is_verified
+        string password
+        string verification_token
     }
     
-    COURSE {
-        string CourseCode PK
-        string Session
-        int TeacherID FK
+    course {
+        int id PK
+        string name
+        string roll UK
+        string registration UK
+        string session
+        int fingerId UK
+        int attendance
+        datetime last_date
     }
-    
-    ATTENDANCE {
-        int ID PK
-        string CourseCode FK
-        int StudentID FK
-        datetime Timestamp
+
+    temp_registrations {
+        int id PK
+        string name
+        string roll
+        string reg
+        string session
+        string email
+        string phone
+        string password
+        string verification_token
+        boolean is_verified
+        timestamp created_at
+    }
+
+    fingerprint_data {
+        int id PK
+        boolean status
+        int lastFingerId
+        datetime start_time
+        int scan_interval
     }
 ```
 
@@ -94,11 +125,11 @@ erDiagram
 - **Advanced Course Management:** Teachers can dynamically create courses, start attendance timers, and automatically generate end-of-course Excel attendance sheets.
 - **Hardware Audio-Visual Feedback:** The physical scanner features an LCD display, multi-color LEDs, and buzzers to provide instant confirmation of successful or failed attendance attempts.
 
-### System Showcase (Demo)
+## System Showcase (Demo)
 
--  | [Hardware Front view](documentation/Hardware1.png) | [Hardware Side View](documentation/Hardware2.png) | [Hardware Back View](documentation/Hardware3.png) |
-   | :---: | :---: | :---: |
-   | ![Hardware Front View](documentation/Hardware1.png) | ![Hardware Side View](documentation/Hardware2.png) | ![Hardware Back view](documentation/Hardware3.png) |
+- | [Hardware Front view](documentation/Hardware1.png) | [Hardware Side View](documentation/Hardware2.png) | [Hardware Back View](documentation/Hardware3.png) |
+  | :---: | :---: | :---: |
+  | ![Hardware Front View](documentation/Hardware1.png) | ![Hardware Side View](documentation/Hardware2.png) | ![Hardware Back view](documentation/Hardware3.png) |
 
 - [**Home Page**](documentation/HomePage.png)
 
@@ -122,7 +153,7 @@ erDiagram
 
 - [**Course Administration**](documentation/ManageCourses.png)
 
-  ![Manage Course](documentation/ManageCourses.png)
+![Manage Course](documentation/ManageCourses.png)
 
 ## Installation and Setup
 
@@ -262,10 +293,8 @@ Biometric-Attendance-System/
 
 ![Developer Information](documentation/DeveloperInfo.png)
 
-## Closing Remarks
+## Outro
 
-Thank you for checking out the **Biometric Attendance Management System**.
-
-This project demonstrates the integration of biometric authentication, IoT hardware, and web technologies to provide a secure, automated, and reliable attendance management solution. By eliminating proxy attendance and streamlining record management, the system addresses real-world challenges faced by educational institutions. Feel free to explore the codebase, fork the repository, and contribute ideas for future improvements.
+Thank you for checking out the **Biometric Attendance Management System**. Feel free to explore the codebase, fork the repository, and contribute ideas for future improvements.
 
 ---
