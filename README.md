@@ -239,8 +239,7 @@ cd Biometric-Attendance-System
 Biometric-Attendance-System/
 │
 ├── config/                   # Configuration files
-│   ├── db_config.php         # Database configuration
-│   └── README.md
+│   └── db_config.php         # Database configuration
 │
 ├── controllers/              # Business logic controllers
 │   ├── PHPMailer/            # Email library
